@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentação - StockControl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>StockControl</h1>
+        <p>Movimentação de Estoque</p>
+    </header>
+
+    <main>
+        <h2>Entrada e Saída de Produtos</h2>
+
+        {% if mensagem %}
+            <p class="sucesso">{{ mensagem }}</p>
+        {% endif %}
+
+        {% if erro %}
+            <p class="erro">{{ erro }}</p>
+        {% endif %}
+
+        <form method="POST" class="formulario">
+            <label for="produto_id">Produto</label>
+            <select name="produto_id" id="produto_id" required>
+                <option value="">Selecione um produto</option>
+                {% for produto in produtos %}
+                <option value="{{ produto['id'] }}">
+                    {{ produto['nome'] }} -
+                    Estoque: {{ produto['quantidade'] }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <label for="tipo">Tipo de movimentação</label>
+            <select name="tipo" id="tipo" required>
+                <option value="entrada">Entrada</option>
+                <option value="saida">Saída</option>
+            </select>
+
+            <label for="quantidade">Quantidade</label>
+            <input type="number" name="quantidade"
+                   id="quantidade" min="1" required>
+
+            <button type="submit" class="botao">
+                Registrar Movimentação
+            </button>
+        </form>
+
+        
+<p>
+    <a href="{{ url_for('historico') }}">
+        Ver Histórico de Movimentações
+    </a>
+</p>
+
+<p><a href="/">Voltar ao início</a></p>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar Produtos - StockControl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>StockControl</h1>
+        <p>Consulta de Produtos</p>
+    </header>
+
+    <main>
+        <h2>Produtos Cadastrados</h2>
+
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Preço (R$)</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto['id'] }}</td>
+                    <td>{{ produto['nome'] }}</td>
+                    <td>{{ produto['categoria'] }}</td>
+                    <td>{{ produto['quantidade'] }}</td>
+                    <td>{{ produto['preco'] | moeda }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_produto', produto_id=produto['id']) }}"
+                           class="botao-editar">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">Nenhum produto cadastrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p><a href="/">Voltar ao início</a></p>
+    </main>
+</body>
+</html>

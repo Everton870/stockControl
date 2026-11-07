@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto - StockControl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>StockControl</h1>
+        <p>Editar Produto</p>
+    </header>
+
+    <main>
+        <h2>Alterar Dados do Produto</h2>
+
+        <form method="POST">
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome"
+                   value="{{ produto['nome'] }}" required>
+
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria"
+                   value="{{ produto['categoria'] }}" required>
+
+            <label for="preco">Preço (R$):</label>
+            <input type="number" id="preco" name="preco"
+                   step="0.01" min="0"
+                   value="{{ produto['preco'] }}" required>
+
+            <p>
+                Quantidade atual em estoque:
+                <strong>{{ produto['quantidade'] }}</strong>
+            </p>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+
+        <p>
+            <a href="{{ url_for('consulta') }}">Voltar à consulta</a>
+        </p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto - StockControl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>StockControl</h1>
+        <p>Cadastro de Produtos</p>
+    </header>
+
+    <main>
+        <h2>Cadastrar Produto</h2>
+
+        {% if request.args.get('sucesso') %}
+            <p class="sucesso">Produto cadastrado com sucesso!</p>
+        {% endif %}
+
+        <form method="POST" class="formulario">
+            <label>Nome do produto</label>
+            <input type="text" name="nome" required>
+
+            <label>Categoria</label>
+            <input type="text" name="categoria" required>
+
+            <label>Quantidade</label>
+            <input type="number" name="quantidade" min="0" required>
+
+            <label>Preço (R$)</label>
+            <input type="number" name="preco" min="0" step="0.01" required>
+
+            <button type="submit" class="botao">
+                Salvar Produto
+            </button>
+        </form>
+
+        <p><a href="/">Voltar ao início</a></p>
+    </main>
+</body>
+</html>
+s

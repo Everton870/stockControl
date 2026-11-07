@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockControl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>StockControl</h1>
+        <p>Sistema de Controle de Estoque</p>
+    </header>
+
+    <main>
+        <h2>Painel Principal</h2>
+        <p>Bem-vindo ao sistema!</p>
+
+        <div class="menu">
+            <a href="{{ url_for('cadastro') }}" class="botao">
+                Cadastrar Produto
+            </a>
+
+            <a href="{{ url_for('consulta') }}" class="botao">
+                Consultar Produtos
+            </a>
+
+            <a href="{{ url_for('movimentacao') }}" class="botao">
+                Movimentar Estoque
+            </a>
+
+            <a href="{{ url_for('relatorio') }}" class="botao">
+                Relatório de Estoque
+            </a>
+        </div>
+    </main>
+</body>
+</html>
